@@ -1,7 +1,7 @@
-"use client"
+'use client';
 
-import { motion, Variants } from "framer-motion"
-import { SERVICES_DATA } from "@/config/constants"
+import { motion, Variants } from 'framer-motion';
+import { SERVICES_DATA } from '@/config/constants';
 
 export default function ServicesSection() {
   const container: Variants = {
@@ -9,15 +9,15 @@ export default function ServicesSection() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   const item: Variants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
-  }
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50 } },
+  };
 
   return (
     <section id="services" className="py-24 bg-muted/30">
@@ -30,24 +30,27 @@ export default function ServicesSection() {
             transition={{ duration: 0.5 }}
           >
             <div className="inline-flex items-center gap-2 mb-6 justify-center">
-              <span className="w-8 h-[2px] bg-primary"></span>
-              <span className="text-sm font-bold tracking-widest text-primary uppercase">Core Focus Areas</span>
-              <span className="w-8 h-[2px] bg-primary"></span>
+              <span className="w-8 h-0.5 bg-primary"></span>
+              <span className="text-sm font-bold tracking-widest text-primary uppercase">
+                Core Focus Areas
+              </span>
+              <span className="w-8 h-0.5 bg-primary"></span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
               Engineering the Ecosystem
             </h2>
             <p className="text-lg text-muted-foreground">
-              Delivering end-to-end technological solutions that power the most advanced vehicles on the road today and tomorrow.
+              Delivering end-to-end technological solutions that power the most
+              advanced vehicles on the road today and tomorrow.
             </p>
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {SERVICES_DATA.map((service) => (
@@ -71,5 +74,5 @@ export default function ServicesSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
