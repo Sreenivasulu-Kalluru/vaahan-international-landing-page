@@ -1,37 +1,9 @@
 "use client"
 
 import { motion, Variants } from "framer-motion"
-import { Car, Cpu, Code2, BatteryCharging, Network } from "lucide-react"
+import { SERVICES_DATA } from "@/config/constants"
 
 export default function ServicesSection() {
-  const services = [
-    {
-      icon: <Car className="w-8 h-8" />,
-      title: "Software Defined Vehicles",
-      description: "Decoupling hardware from software to enable continuous updates, personalization, and advanced autonomy capabilities.",
-    },
-    {
-      icon: <Code2 className="w-8 h-8" />,
-      title: "Automotive Software",
-      description: "Scalable, secure, and performant OS and middleware solutions for next-generation vehicle architectures.",
-    },
-    {
-      icon: <Cpu className="w-8 h-8" />,
-      title: "Embedded Systems",
-      description: "Mission-critical hardware and firmware design ensuring functional safety (ISO 26262) and real-time processing.",
-    },
-    {
-      icon: <Network className="w-8 h-8" />,
-      title: "AI & Connectivity",
-      description: "Edge AI integration, V2X communication, and cloud backends for intelligent fleet management and predictive maintenance.",
-    },
-    {
-      icon: <BatteryCharging className="w-8 h-8" />,
-      title: "EV Ecosystem",
-      description: "Advanced Battery Management Systems (BMS), charging infrastructure software, and powertrain optimization.",
-    }
-  ]
-
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -78,7 +50,7 @@ export default function ServicesSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => (
+          {SERVICES_DATA.map((service, index) => (
             <motion.div
               key={service.title}
               variants={item}

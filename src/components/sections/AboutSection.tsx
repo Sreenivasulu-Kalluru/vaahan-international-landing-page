@@ -1,27 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Shield, Zap, Globe } from "lucide-react"
+import { ABOUT_FEATURES } from "@/config/constants"
 
 export default function AboutSection() {
-  const features = [
-    {
-      icon: <Zap className="w-6 h-6 text-primary" />,
-      title: "Performance",
-      description: "Optimized software architectures for instantaneous response times and maximum efficiency."
-    },
-    {
-      icon: <Shield className="w-6 h-6 text-primary" />,
-      title: "Reliability",
-      description: "Automotive-grade embedded systems designed with uncompromised safety and security."
-    },
-    {
-      icon: <Globe className="w-6 h-6 text-primary" />,
-      title: "Sustainability",
-      description: "Building the foundation for a zero-emission future with advanced EV ecosystems."
-    }
-  ]
-
   return (
     <section id="about" className="py-24 relative">
       <div className="absolute top-0 w-full h-px bg-linear-to-r from-transparent via-border to-transparent" />
@@ -58,7 +40,7 @@ export default function AboutSection() {
           </motion.div>
 
           <div className="flex flex-col gap-6">
-            {features.map((feature, index) => (
+            {ABOUT_FEATURES.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 20 }}

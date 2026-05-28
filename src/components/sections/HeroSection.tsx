@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion"
 import { ArrowRight, ChevronDown } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
@@ -27,7 +27,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-br from-foreground via-foreground to-foreground/50"
+          className={cn(
+            "text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-6",
+            "bg-clip-text text-transparent bg-linear-to-br from-foreground via-foreground to-foreground/50"
+          )}
         >
           Engineering the <br className="hidden md:block" />
           <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-blue-400">Next Generation</span>

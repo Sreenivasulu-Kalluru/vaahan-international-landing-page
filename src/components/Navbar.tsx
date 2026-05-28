@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X, Cpu } from "lucide-react"
+import { Menu, X, Cpu, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
+import { NAV_LINKS } from "@/config/constants"
+import { cn } from "@/lib/utils"
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -19,17 +21,12 @@ export default function Navbar() {
     setIsScrolled(latest > 50)
   })
 
-  const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Innovation", href: "#innovation" },
-  ]
-
   return (
     <motion.header
-      className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+      className={cn(
+        "fixed top-0 w-full z-50 transition-colors duration-300",
         isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm" : "bg-transparent"
-      }`}
+      )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -40,9 +37,8 @@ export default function Navbar() {
           <span className="font-bold text-xl tracking-tighter">VAAHAN</span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.name}
               href={link.href}
@@ -58,14 +54,13 @@ export default function Navbar() {
             aria-label="Toggle Theme"
           >
             {mounted && theme === "dark" ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <Sun className="w-5 h-5" />
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+              <Moon className="w-5 h-5" />
             )}
           </button>
         </nav>
 
-        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -74,7 +69,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -83,7 +77,7 @@ export default function Navbar() {
           className="md:hidden bg-background border-b border-border shadow-lg"
         >
           <div className="flex flex-col px-4 py-6 gap-4">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
