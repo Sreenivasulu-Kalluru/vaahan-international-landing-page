@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10" />
       <div className="absolute top-0 right-0 w-125 h-125 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center text-center">
@@ -42,7 +42,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-lg md:text-xl text-muted-foreground max-w-[700px] mb-10 leading-relaxed"
+          className="text-lg md:text-xl text-muted-foreground max-w-175 mb-10 leading-relaxed"
         >
           A modern mobility ecosystem focused on Software Defined Vehicles,
           Embedded Systems, and premium EV technologies.
