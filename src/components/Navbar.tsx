@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X, Cpu, Sun, Moon } from "lucide-react"
+import { motion } from "framer-motion"
+import { Menu, X, Sun, Moon } from "lucide-react"
+import { Logo } from "@/components/Logo"
 import { useTheme } from "next-themes"
 import { NAV_LINKS } from "@/config/constants"
 import { cn } from "@/lib/utils"
@@ -11,15 +12,22 @@ import { cn } from "@/lib/utils"
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { scrollY } = useScroll()
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0)
+    return () => clearTimeout(timer)
+  }, [])
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50)
-  })
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    handleScroll() // Initialize on mount
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
     <motion.header
@@ -33,7 +41,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <Cpu className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform" />
+          <Logo className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform" />
           <span className="font-bold text-xl tracking-tighter">VAAHAN</span>
         </Link>
 

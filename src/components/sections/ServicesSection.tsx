@@ -50,13 +50,11 @@ export default function ServicesSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {SERVICES_DATA.map((service, index) => (
+          {SERVICES_DATA.map((service) => (
             <motion.div
               key={service.title}
               variants={item}
-              className={`group relative overflow-hidden p-8 rounded-3xl bg-background border border-border hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/5 ${
-                index === 3 || index === 4 ? "lg:col-span-1" : ""
-              } ${index === 4 ? "md:col-span-2 lg:col-span-2" : ""}`}
+              className="group relative overflow-hidden p-8 rounded-3xl bg-background border border-border hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/5"
             >
               <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative z-10">
